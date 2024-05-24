@@ -46,15 +46,17 @@ public class Main {
 
     private static void capturarDigimon(Domador domador) {
         Digimon nuevoDigimon = generarDigimonAleatorio();
-        System.out.println("Intentando capturar a " + nuevoDigimon.getNombre());
+        System.out.println("Intentando capturar a ..." + nuevoDigimon.getNombre());
         domador.capturar(nuevoDigimon);
     }
 
     private static Digimon generarDigimonAleatorio() {
         String[] nombres = {"Agumon", "Gabumon", "Patamon"};
         String nombreDigimon = nombres[(int) (Math.random() * nombres.length)];
+        
         Digimon digimon = new Digimon(nombreDigimon);
         digimon.recibirDanio((int)(Math.random() * 80) + 1);
+        
         return digimon;
     }
 }
