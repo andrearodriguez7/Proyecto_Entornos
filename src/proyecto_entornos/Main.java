@@ -2,7 +2,16 @@ package proyecto_entornos;
 
 import java.util.Scanner;
 
+/**
+ * Clase principal que gestiona el flujo del juego de batallas y capturas de Digimon.
+ */
 public class Main {
+    
+    /**
+     * Método principal que inicia el juego y gestiona el menú de opciones.
+     * 
+     * @param args Los argumentos de la línea de comandos.
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -24,7 +33,7 @@ public class Main {
             switch (opcion) {
                 case 1:
                     BatallaDigital batalla = new BatallaDigital();
-                    batalla.iniciarBatalla(domador);
+                    batalla.pelea(domador);
                     numBatallas++;
                     if (numBatallas >= MAX_BATALLAS) {
                         System.out.println("Has completado todas las batallas. Fin del juego");
@@ -44,12 +53,22 @@ public class Main {
         }
     }
 
+    /**
+     * Método que gestiona la captura de un Digimon por parte del domador.
+     * 
+     * @param domador El domador que intenta capturar el Digimon.
+     */
     private static void capturarDigimon(Domador domador) {
         Digimon nuevoDigimon = generarDigimonAleatorio();
         System.out.println("Intentando capturar a ..." + nuevoDigimon.getNombre());
         domador.capturar(nuevoDigimon);
     }
 
+    /**
+     * Método que genera un Digimon aleatorio.
+     * 
+     * @return Un objeto Digimon generado aleatoriamente.
+     */
     private static Digimon generarDigimonAleatorio() {
         String[] nombres = {"Agumon", "Gabumon", "Patamon"};
         String nombreDigimon = nombres[(int) (Math.random() * nombres.length)];
